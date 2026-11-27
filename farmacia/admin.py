@@ -3,7 +3,10 @@ from datetime import date
 from django.contrib import admin
 
 from farmacia.infrastructure.models import (
-    ClienteModel, DetalleVentaModel, LaboratorioModel, MedicamentoModel, VentaModel,
+    ClienteModel,
+    LaboratorioModel,
+    MedicamentoModel,
+    VentaModel,
 )
 
 admin.site.site_header = "Botica Central - Administracion"
@@ -59,20 +62,3 @@ class VentaAdmin(admin.ModelAdmin):
         return False
 
 
-@admin.register(DetalleVentaModel)
-class DetalleVentaAdmin(admin.ModelAdmin):
-    """Solo consulta. La PK es compuesta (id_venta, id_medicamento): sin enlaces de edicion."""
-    list_display = ("venta", "medicamento", "cantidad", "precio_unitario", "subtotal")
-    list_display_links = None
-    search_fields = ("medicamento__codigo", "medicamento__nombre", "venta__cliente__nombre")
-    list_filter = ("medicamento",)
-    ordering = ("venta", "medicamento")
-
-    def has_add_permission(self, request):
-        return False
-
-    def has_change_permission(self, request, obj=None):
-        return False
-
-    def has_delete_permission(self, request, obj=None):
-        return False
