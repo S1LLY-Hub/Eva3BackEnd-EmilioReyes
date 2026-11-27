@@ -85,3 +85,28 @@ class StockInsuficiente(ErrorDeNegocio):
 
 class RecetaRequerida(ErrorDeNegocio):
     """El medicamento exige receta y la venta no trae numero_receta."""
+
+
+# ---- Ventas (se agregan en la Semana 3) ----
+class VentaNoEncontrada(EntidadNoEncontrada):
+    pass
+
+
+class TransicionInvalida(ErrorDeNegocio):
+    """El estado de la venta no puede pasar al estado pedido (-> 409)."""
+
+
+class VentaNoEliminable(EliminacionProtegida):
+    """Una venta pagada no se borra: primero se anula (-> 409)."""
+
+
+class VentaSinDetalles(DatoInvalido):
+    """Una venta necesita al menos una linea de detalle."""
+
+
+class CantidadInvalida(DatoInvalido):
+    """cantidad <= 0 en una linea de detalle."""
+
+
+class EstadoDesconocido(DatoInvalido):
+    """El estado pedido no es pendiente, pagada ni anulada."""

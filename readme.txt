@@ -16,6 +16,6 @@
 
 8- verificacion de la base de datos: python manage.py check --database negocio
 
-9- inspeccion de la base de datos para traer el modelo : python manage.py inspectdb --database negocio atenciones detalle_atencion duenos mascotas servicios
+9- inspeccion de la base de datos para traer el modelo : python manage.py inspectdb --database negocio atenciones laboratorios medicamentos clientes ventas detalle_venta
 
 10- cambiar el ".env" a ".env.example" antes de hacer el comit
